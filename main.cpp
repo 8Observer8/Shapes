@@ -1,33 +1,35 @@
 #include <QCoreApplication>
 #include <QTextStream>
-#include "shape.h"
 #include "circle.h"
 #include "rectangle.h"
 
 QTextStream cin(stdin);
 QTextStream cout(stdout);
 
-void printShapeInfo(Shape *ps) {
-    cout << "p = " << ps->perimeter() << endl;
-    cout.flush();
-    cout << "s = " << ps->area() << endl;
-    cout.flush();
-}
-
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    Shape *pc = new Circle(3.0);
-    pc->calcPerimeter();
-    pc->calcArea();
-    printShapeInfo(pc);
+    Circle *pc = new Circle;
+    double radius = 5.5;
+    cout << endl;
+    cout << "Circle:" << endl;
+    cout << "Radius = " << radius << endl;
+    cout << "Perimeter = " << pc->perimeter(radius) << endl;
+    cout << "Area = " << pc->area(radius) << endl;
+    cout.flush();
     delete pc;
 
-    Shape *pr = new Rectangle(5, 10);
-    pr->calcPerimeter();
-    pr->calcArea();
-    printShapeInfo(pr);
+    Rectangle *pr = new Rectangle;
+    double height = 5.0;
+    double width = 10.0;
+    cout << endl;
+    cout << "Rectangle:" << endl;
+    cout << "Height = " << height << endl;
+    cout << "Width = " << width << endl;
+    cout << "Perimeter = " << pr->perimeter(height, width) << endl;
+    cout << "Area = " << pr->area(height, width) << endl;
+    cout.flush();
     delete pr;
 
     return a.exec();

@@ -1,21 +1,18 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "shape.h"
+#include <cmath>
 
-class Circle : public Shape
+class Circle
 {
 public:
-    Circle(double r = 0.0);
+    inline double perimeter(double radius) const {
+        return (2.0 * M_PI * radius);
+    }
 
-    /*virtual*/ double calcPerimeter();
-    /*virtual*/ double calcArea();
-
-    void setRadius(double r);
-    double radius() const;
-
-private:
-    double mRadius;
+    inline double area(double radius) const {
+        return (M_PI * radius * radius);
+    }
 };
 
 #endif // CIRCLE_H

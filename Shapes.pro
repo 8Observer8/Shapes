@@ -15,12 +15,8 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += main.cpp \
-    shape.cpp \
-    circle.cpp \
-    rectangle.cpp
+SOURCES += main.cpp
 
 HEADERS += \
-    shape.h \
     circle.h \
     rectangle.h
