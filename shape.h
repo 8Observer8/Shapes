@@ -8,15 +8,18 @@ public:
     Shape();
     virtual ~Shape();
 
-    virtual double calcPerimeter() = 0;
-    virtual double calcArea() = 0;
+    virtual double perimeter() = 0;
+    virtual double area() = 0;
 
-    double perimeter() const;
-    double area() const;
+//    virtual double calcPerimeter() = 0;
+//    virtual double calcArea() = 0;
 
-protected:
-    double mPerimeter;
-    double mArea;
+//    double perimeter() const;
+//    double area() const;
+
+//protected:
+//    double mPerimeter;
+//    double mArea;
 };
 
 #endif // SHAPE_H

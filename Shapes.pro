@@ -19,4 +19,5 @@ SOURCES += main.cpp
 
 HEADERS += \
     circle.h \
-    rectangle.h
+    rectangle.h \
+    shape.h
