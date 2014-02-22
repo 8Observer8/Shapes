@@ -5,21 +5,13 @@ class Shape
 {
 public:
 
-    Shape();
-    virtual ~Shape();
+    Shape() {}
+    virtual ~Shape() {
 
-    virtual double perimeter() = 0;
-    virtual double area() = 0;
+    }
 
-//    virtual double calcPerimeter() = 0;
-//    virtual double calcArea() = 0;
-
-//    double perimeter() const;
-//    double area() const;
-
-//protected:
-//    double mPerimeter;
-//    double mArea;
+    virtual double perimeter() const = 0;
+    virtual double area() const = 0;
 };
 
 #endif // SHAPE_H

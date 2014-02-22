@@ -4,17 +4,17 @@
 #include "shape.h"
 #include <cmath>
 
-class Circle : Shape
+class Circle : public Shape
 {
 public:
     Circle(double radius = 0.0) : m_radius(radius) {
     }
 
-    static double perimeter(double radius) const {
+    static double perimeter(double radius) {
         return (2.0 * M_PI * radius);
     }
 
-    static double area(double radius) const {
+    static double area(double radius) {
         return (M_PI * radius * radius);
     }
 

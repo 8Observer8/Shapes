@@ -3,7 +3,7 @@
 
 #include "shape.h"
 
-class Rectangle : Shape
+class Rectangle : public Shape
 {
 public:
 
@@ -13,11 +13,11 @@ public:
     {
     }
 
-    static double perimeter(double height, double width) const {
+    static double perimeter(double height, double width) {
         return 2.0 * (height + width);
     }
 
-    static double area(double height, double width) const {
+    static double area(double height, double width) {
         return height * width;
     }
 
