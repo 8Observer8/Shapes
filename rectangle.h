@@ -37,6 +37,14 @@ public:
         return m_width;
     }
 
+    inline void setHeight(double height) {
+        m_height = height;
+    }
+
+    inline void setWidth(double width) {
+        m_width = width;
+    }
+
 private:
     double m_height;
     double m_width;
