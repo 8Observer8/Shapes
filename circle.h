@@ -4,10 +4,13 @@
 #include "shape.h"
 #include <cmath>
 
+namespace myShapes {
+
 class Circle : public Shape
 {
 public:
     Circle(double radius = 0.0) : m_radius(radius) {
+        calcCoordinates();
     }
 
     static double perimeter(double radius) {
@@ -32,10 +35,16 @@ public:
 
     inline void setRadius(double radius) {
         m_radius = radius;
+        calcCoordinates();
     }
 
+protected:
+    virtual void calcCoordinates();
+
 private:
-    double m_radius;
+    int m_radius;
 };
+
+}
 
 #endif // CIRCLE_H

@@ -4,20 +4,21 @@
 #
 #-------------------------------------------------
 
-QT       += core
-
-QT       -= gui
+QT       += core opengl widgets
 
 TARGET = Shapes
-CONFIG   += console
 CONFIG   -= app_bundle
 
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    viewer.cpp \
+    circle.cpp
 
 HEADERS += \
     circle.h \
     rectangle.h \
-    shape.h
+    shape.h \
+    viewer.h \
+    triangle.h

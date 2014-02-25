@@ -1,31 +1,24 @@
-#include <QCoreApplication>
+#include <QApplication>
 #include <QTextStream>
 #include "shape.h"
 #include "circle.h"
 #include "rectangle.h"
-
-QTextStream cin(stdin);
-QTextStream cout(stdout);
-
-void printShapeInfo(Shape *ps) {
-    cout << "p = " << ps->perimeter() << endl;
-    cout.flush();
-    cout << "s = " << ps->area() << endl;
-    cout.flush();
-}
+#include "viewer.h"
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
 
-    Shape *pc = new Circle(3.0);
-    cout << "static perimeter: " << Circle::perimeter(3.0) << endl;
-    printShapeInfo(pc);
-    delete pc;
+    Viewer viewer;
+    viewer.resize(400, 200);
 
-    Shape *pr = new Rectangle(5, 10);
-    printShapeInfo(pr);
-    delete pr;
+    myShapes::Shape *pc = new myShapes::Circle(3.0);
+    viewer.addForPainting(*pc);
+//    delete pc;
 
+//    myShapes::Shape *pr = new myShapes::Rectangle(5.0, 10.0);
+//    delete pr;
+
+    viewer.show();
     return a.exec();
 }

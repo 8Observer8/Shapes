@@ -3,6 +3,8 @@
 
 #include "shape.h"
 
+namespace myShapes {
+
 class Rectangle : public Shape
 {
 public:
@@ -49,5 +51,7 @@ private:
     double m_height;
     double m_width;
 };
+
+}
 
 #endif // RECTANGLE_H
