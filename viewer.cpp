@@ -1,28 +1,26 @@
 #include "viewer.h"
+#include <utility>
+#include <QDebug>
 
 Viewer::Viewer(QWidget* pwgt) :
     QGLWidget(pwgt)
 {
 }
 
-void Viewer::addForPainting(const myShapes::Shape &ps)
+void Viewer::draw(std::shared_ptr<myShapes::Shape> ps, int xOffset, int yOffset)
 {
-    shapes.push_back(ps);
-}
-
-void Viewer::draw(const myShapes::Shape &ps, int xOffset, int yOffset)
-{
-    std::vector<std::pair<int, int> > p;
-    p = ps.points();
-
     glPointSize(2.0);
-    glBegin(GL_LINES);
+    glBegin(GL_LINE_LOOP);
     glColor3f(0.0, 0.0, 0.0);
-    for (int i = 0; i < p.size(); ++i) {
-        int x = p[i].first;
-        int y = p[i].second;
+    for (int i = 0; i < ps->amountOfPoints(); ++i) {
+        std::pair<int, int> point = ps->point(i);
+//        qDebug() << "x = " << point.first << "; xOffset = " << xOffset;
+//        qDebug() << "y = " << point.second << "; yOffset = " << yOffset;
+        int x = point.first + xOffset;
+        int y = point.second + yOffset;
         glVertex2f(x, y);
     }
+//    qDebug() << "";
     glEnd();
 }
 
@@ -31,7 +29,7 @@ void Viewer::draw(const myShapes::Shape &ps, int xOffset, int yOffset)
     qglClearColor(Qt::white);
 }
 
-void Viewer::resizeGL(int nWidth, int nHeight)
+/*virtual*/ void Viewer::resizeGL(int nWidth, int nHeight)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -39,11 +37,24 @@ void Viewer::resizeGL(int nWidth, int nHeight)
     glOrtho(0, 400, 200, 0, -1, 1);
 }
 
-void Viewer::paintGL()
+/*virtual*/ void Viewer::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for (int i = 0; i < shapes.size(); ++i) {
-        draw(shapes[i], 0, 0);
+    int xGeneralOffset = 50;
+    int yGeneralOffset = 100;
+    int xOffset = 0;
+    int yOffset = 0;
+    for (std::size_t i = 0; i < m_pshapes.size(); ++i) {
+        if (( (i+1) % 2) != 0) { // Odd, one-based
+            xOffset = xGeneralOffset;
+            yOffset += yGeneralOffset;
+        } else {
+            xOffset = xGeneralOffset + 150;
+        }
+        if (i == 0 || i == 1) {
+            yOffset = 50;
+        }
+        draw(m_pshapes[i], xOffset, yOffset);
     }
 }

@@ -5,12 +5,16 @@
 #include "shape.h"
 
 #include <vector>
+#include <memory>
 
 class Viewer : public QGLWidget
 {
 public:
     Viewer(QWidget *pwgt = 0);
-    void addForPainting(const myShapes::Shape &ps);
+
+    void addForPainting(std::shared_ptr<myShapes::Shape> ps) {
+        m_pshapes.push_back(ps);
+    }
 
 protected:
     virtual void initializeGL();
@@ -18,8 +22,8 @@ protected:
     virtual void paintGL();
 
 private:
-    std::vector<myShapes::Shape> shapes;
-    void draw(const myShapes::Shape &ps, int xOffset, int yOffset);
+    std::vector<std::shared_ptr<myShapes::Shape> > m_pshapes;
+    void draw(std::shared_ptr<myShapes::Shape> ps, int xOffset, int yOffset);
 };
 
 #endif // VIEWER_H

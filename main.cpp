@@ -1,9 +1,10 @@
 #include <QApplication>
-#include <QTextStream>
 #include "shape.h"
-#include "circle.h"
 #include "rectangle.h"
 #include "viewer.h"
+#include <utility>
+#include <iostream>
+#include <memory>
 
 int main(int argc, char *argv[])
 {
@@ -12,12 +13,15 @@ int main(int argc, char *argv[])
     Viewer viewer;
     viewer.resize(400, 200);
 
-    myShapes::Shape *pc = new myShapes::Circle(3.0);
-    viewer.addForPainting(*pc);
-//    delete pc;
+    std::shared_ptr<myShapes::Shape> pr1(new myShapes::Rectangle(100.0, 25.0));
+    std::shared_ptr<myShapes::Shape> pr2(new myShapes::Rectangle(100.0, 25.0));
+    std::shared_ptr<myShapes::Shape> pr3(new myShapes::Rectangle(100.0, 25.0));
+    std::shared_ptr<myShapes::Shape> pr4(new myShapes::Rectangle(100.0, 25.0));
 
-//    myShapes::Shape *pr = new myShapes::Rectangle(5.0, 10.0);
-//    delete pr;
+    viewer.addForPainting(pr1);
+    viewer.addForPainting(pr2);
+    viewer.addForPainting(pr3);
+    viewer.addForPainting(pr4);
 
     viewer.show();
     return a.exec();

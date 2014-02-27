@@ -14,11 +14,13 @@ public:
     }
 
     static double perimeter(double radius) {
-        return (2.0 * M_PI * radius);
+        //return (2.0 * M_PI * radius)
+        return 0.0;
     }
 
     static double area(double radius) {
-        return (M_PI * radius * radius);
+        // return (M_PI * radius * radius)
+        return 0.0;
     }
 
     virtual double perimeter() const {

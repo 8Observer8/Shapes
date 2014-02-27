@@ -6,6 +6,8 @@
 
 QT       += core opengl widgets
 
+QMAKE_CXXFLAGS += -std=c++11
+
 TARGET = Shapes
 CONFIG   -= app_bundle
 

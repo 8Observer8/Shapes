@@ -9,10 +9,14 @@ class Rectangle : public Shape
 {
 public:
 
-    Rectangle(double height = 0.0, double width = 0.0) :
+    Rectangle(double width = 0.0, double height = 0.0) :
         m_height(height),
         m_width(width)
     {
+        addPoint(0, 0);
+        addPoint(width, 0);
+        addPoint(width, height);
+        addPoint(0, height);
     }
 
     static double perimeter(double height, double width) {

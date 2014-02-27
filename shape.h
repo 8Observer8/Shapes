@@ -10,9 +10,10 @@ class Shape
 {
 public:
 
-    Shape() {}
-    virtual ~Shape() {
+    Shape() {
+    }
 
+    virtual ~Shape() {
     }
 
     virtual double perimeter() const = 0;
@@ -26,12 +27,20 @@ public:
         return m_pointSize;
     }
 
-    inline const std::vector<std::pair<int, int> > &points() const {
-        return m_points;
+    std::pair<int, int> point(int index) const {
+        return m_points[index];
+    }
+
+    int amountOfPoints() {
+        return m_points.size();
     }
 
 protected:
-    virtual void calcCoordinates() = 0;
+    void addPoint(int x, int y) {
+        m_points.push_back(std::make_pair(x, y));
+    }
+
+private:
     int m_pointSize;
     std::vector<std::pair<int, int> > m_points;
 };
