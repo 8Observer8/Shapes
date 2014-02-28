@@ -3,24 +3,32 @@
 
 #include "shape.h"
 #include <cmath>
+#include <QDebug>
 
 namespace myShapes {
+
+const double PI = 2.0 * std::acos(0.0);
 
 class Circle : public Shape
 {
 public:
     Circle(double radius = 0.0) : m_radius(radius) {
-        calcCoordinates();
+        std::size_t n = 20;
+        for (std::size_t i = 0; i < n; ++i) {
+            double angle = 2.0 * PI * (double) i / (double) n;
+            int x = (int) ( radius + radius * std::cos(angle) );
+            int y = (int) ( radius + radius * std::sin(angle) );
+            addPoint(x, y);
+            qDebug() << x << " " << y;
+        }
     }
 
     static double perimeter(double radius) {
-        //return (2.0 * M_PI * radius)
-        return 0.0;
+        return (2.0 * PI * radius);
     }
 
     static double area(double radius) {
-        // return (M_PI * radius * radius)
-        return 0.0;
+        return (PI * radius * radius);
     }
 
     virtual double perimeter() const {
@@ -37,11 +45,7 @@ public:
 
     inline void setRadius(double radius) {
         m_radius = radius;
-        calcCoordinates();
     }
-
-protected:
-    virtual void calcCoordinates();
 
 private:
     int m_radius;

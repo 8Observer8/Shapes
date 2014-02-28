@@ -15,8 +15,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    viewer.cpp \
-    circle.cpp
+    viewer.cpp
 
 HEADERS += \
     circle.h \
