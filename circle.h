@@ -13,13 +13,12 @@ class Circle : public Shape
 {
 public:
     Circle(double radius = 0.0) : m_radius(radius) {
-        std::size_t n = 20;
+        const std::size_t n = 40;
         for (std::size_t i = 0; i < n; ++i) {
             double angle = 2.0 * PI * (double) i / (double) n;
             int x = (int) ( radius + radius * std::cos(angle) );
             int y = (int) ( radius + radius * std::sin(angle) );
             addPoint(x, y);
-            qDebug() << x << " " << y;
         }
     }
 
