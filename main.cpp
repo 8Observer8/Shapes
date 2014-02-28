@@ -16,9 +16,9 @@ int main(int argc, char *argv[])
     Viewer viewer;
     viewer.resize(400, 200);
 
-    std::shared_ptr<myShapes::Shape> pt(new myShapes::Triangle(30, 50));
     std::shared_ptr<myShapes::Shape> pr2(new myShapes::Rectangle(100.0, 25.0));
     std::shared_ptr<myShapes::Shape> pr3(new myShapes::Rectangle(100.0, 25.0));
+    std::shared_ptr<myShapes::Shape> pt(new myShapes::Triangle(30.0, 50.0));
     std::shared_ptr<myShapes::Shape> pc(new myShapes::Circle(50.0));
 
     viewer.addForPainting(pt);
@@ -27,5 +27,8 @@ int main(int argc, char *argv[])
     viewer.addForPainting(pr3);
 
     viewer.show();
+
+    std::dynamic_pointer_cast<myShapes::Circle>(pc)->setRadius(25.0);
+
     return a.exec();
 }

@@ -42,7 +42,7 @@ public:
         return m_radius;
     }
 
-    inline void setRadius(double radius) {
+    virtual inline void setRadius(double radius) {
         m_radius = radius;
     }
 
