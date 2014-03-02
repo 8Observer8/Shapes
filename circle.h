@@ -13,13 +13,7 @@ class Circle : public Shape
 {
 public:
     Circle(double radius = 0.0) : m_radius(radius) {
-        const std::size_t n = 40;
-        for (std::size_t i = 0; i < n; ++i) {
-            double angle = 2.0 * PI * (double) i / (double) n;
-            int x = (int) ( radius + radius * std::cos(angle) );
-            int y = (int) ( radius + radius * std::sin(angle) );
-            addPoint(x, y);
-        }
+        calcCoordinates();
     }
 
     static double perimeter(double radius) {
@@ -44,9 +38,21 @@ public:
 
     virtual inline void setRadius(double radius) {
         m_radius = radius;
+        calcCoordinates();
     }
 
 private:
+    void calcCoordinates() {
+        const std::size_t n = 40;
+        for (std::size_t i = 0; i < n; ++i) {
+            double angle = 2.0 * PI * (double) i / (double) n;
+            int x = (int) ( m_radius + m_radius * std::cos(angle) );
+            int y = (int) ( m_radius + m_radius * std::sin(angle) );
+            addPoint(x, y);
+        }
+
+    }
+
     int m_radius;
 };
 
