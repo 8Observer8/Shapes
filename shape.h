@@ -31,12 +31,16 @@ public:
         return m_points[index];
     }
 
-    int amountOfPoints() {
+    inline int amountOfPoints() {
         return m_points.size();
     }
 
+    inline void deletePoints() {
+        m_points.clear();
+    }
+
 protected:
-    void addPoint(int x, int y) {
+    inline void addPoint(int x, int y) {
         m_points.push_back(std::make_pair(x, y));
     }
 

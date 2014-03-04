@@ -9,18 +9,17 @@ Viewer::Viewer(QWidget* pwgt) :
 
 void Viewer::draw(std::shared_ptr<myShapes::Shape> ps, int xOffset, int yOffset)
 {
+    if (ps == std::nullptr_t()) return;
+
     glPointSize(2.0);
     glBegin(GL_LINE_LOOP);
     glColor3f(0.0, 0.0, 0.0);
     for (int i = 0; i < ps->amountOfPoints(); ++i) {
         std::pair<int, int> point = ps->point(i);
-//        qDebug() << "x = " << point.first << "; xOffset = " << xOffset;
-//        qDebug() << "y = " << point.second << "; yOffset = " << yOffset;
         int x = point.first + xOffset;
         int y = point.second + yOffset;
         glVertex2f(x, y);
     }
-//    qDebug() << "";
     glEnd();
 }
 

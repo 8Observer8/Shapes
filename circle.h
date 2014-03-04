@@ -38,6 +38,7 @@ public:
 
     virtual inline void setRadius(double radius) {
         m_radius = radius;
+        deletePoints();
         calcCoordinates();
     }
 
@@ -53,7 +54,7 @@ private:
 
     }
 
-    int m_radius;
+    double m_radius;
 };
 
 }
